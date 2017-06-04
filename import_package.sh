@@ -17,6 +17,7 @@ function error() {
 
 function deploy() {
     dir=${1:-DragonBonesCpp}
+    cd $dir_path
     bonesDir=$dir_path/$dir
     if [ -e $bonesDir ]; then
         rm -rf $bonesDir
@@ -26,14 +27,19 @@ function deploy() {
     mkdir $bonesDir/rapidjson
     mkdir $bonesDir/rapidxml
     echo "Create link..."
-    ln -s $dir_path/DragonBones/src/dragonBones/* $bonesDir/dragonBones
-    ln -s $dir_path/Cocos2DX_3.x/src/dragonBones/cocos2dx $bonesDir/dragonBones
-    ln -s $dir_path/Cocos2DX_3.x/src/dragonBones/proj.android $bonesDir/dragonBones
-    ln -s $dir_path/Cocos2DX_3.x/src/*.h $bonesDir
-    ln -s $dir_path/Cocos2DX_3.x/src/*.cpp $bonesDir
-    ln -s $dir_path/3rdParty/rapidjson/* $bonesDir/rapidjson
-    ln -s $dir_path/3rdParty/rapidxml/* $bonesDir/rapidxml
-    unlink $bonesDir/rapidjson/msinttypes
+    cd $bonesDir/dragonBones
+    pwd
+    ln -s ../../DragonBones/src/dragonBones/* .
+    ln -s ../../Cocos2DX_3.x/src/dragonBones/cocos2dx .
+    ln -s ../../Cocos2DX_3.x/src/dragonBones/proj.android .
+    cd $bonesDir
+    ln -s ../Cocos2DX_3.x/extension/* .
+    cd $bonesDir/rapidjson
+    ln -s ../../3rdParty/rapidjson/* .
+    unlink ./msinttypes
+    cd $bonesDir/rapidxml
+    ln -s ../../3rdParty/rapidxml/* .
+    cd $dir_path
     echo "Done!"
 }
 
