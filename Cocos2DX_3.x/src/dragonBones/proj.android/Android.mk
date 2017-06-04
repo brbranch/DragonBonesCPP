@@ -28,10 +28,13 @@ LOCAL_SRC_FILES :=      ../animation/Animation.cpp \
                         ../cocos2dx/CCArmatureDisplay.cpp \
                         ../cocos2dx/CCFactory.cpp \
                         ../cocos2dx/CCSlot.cpp \
-                        ../cocos2dx/CCTextureData.cpp
+                        ../cocos2dx/CCTextureData.cpp \
+						../../DragonBonesPool.cpp \
+						../../DragonBonesUnit.cpp
 
 
 LOCAL_C_INCLUDES :=     $(LOCAL_PATH)/../ \
+						$(LOCAL_PATH)/../../ \
                         $(LOCAL_PATH)/../animation \
                         $(LOCAL_PATH)/../armature \
                         $(LOCAL_PATH)/../core \
@@ -44,6 +47,7 @@ LOCAL_C_INCLUDES :=     $(LOCAL_PATH)/../ \
                         $(LOCAL_PATH)/../textures \
 
 LOCAL_EXPORT_C_INCLUDES :=     $(LOCAL_PATH)/../ \
+						$(LOCAL_PATH)/../../ \
                         $(LOCAL_PATH)/../animation \
                         $(LOCAL_PATH)/../armature \
                         $(LOCAL_PATH)/../core \
